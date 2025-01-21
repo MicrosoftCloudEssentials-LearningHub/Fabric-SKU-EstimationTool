@@ -42,7 +42,6 @@ async function calculateSKU() {
     const copilotEnabled = document.getElementById('copilotEnabled').value === 'yes';
     const dataRefreshFrequency = document.getElementById('dataRefreshFrequency').value;
     const dataRetentionPeriod = document.getElementById('dataRetentionPeriod').value;
-    const userCount = parseInt(document.getElementById('userCount').value);
     const dataComplexity = document.getElementById('dataComplexity').value;
 
     // Get selected workloads
@@ -56,11 +55,11 @@ async function calculateSKU() {
 
     // Calculate SKU based on various factors
     let sku = calculateBaseSKU(dataSize, batchCycles, numTables, externalData);
-    sku = adjustForWorkloads(sku, workloads, externalData);
-    sku = adjustForCopilot(sku, copilotEnabled, externalData);
-    sku = adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeriod, dataComplexity, userCount, externalData);
-    sku = adjustForStorage(sku, dataSize, externalData);
-    sku = adjustForDemandForecasting(sku, externalData);
+    sku = adjustForWorkloads(sku, workloads);
+    sku = adjustForCopilot(sku, copilotEnabled);
+    sku = adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeriod, dataComplexity);
+    sku = adjustForStorage(sku, dataSize);
+    sku = adjustForDemandForecasting(sku);
 
     // Determine the recommended SKU and capacity units
     const { recommendedSku, capacityUnits, cuUse30Sec } = determineSKU(sku);
@@ -72,46 +71,46 @@ async function calculateSKU() {
 function calculateBaseSKU(dataSize, batchCycles, numTables, externalData) {
     const baseSku = 2;  // Base SKU value for F2
     // Calculate base SKU based on data size, batch cycles, number of tables, and external data
-    return baseSku + dataSize * 0.005 + batchCycles * 2.5 + numTables * 0.05 + externalData.baseAdjustment;
+    return baseSku + dataSize * 0.01 + batchCycles * 1.5 + numTables * 0.001 + externalData.baseAdjustment;
 }
 
-function adjustForWorkloads(sku, workloads, externalData) {
+function adjustForWorkloads(sku, workloads) {
     const baseAdjustment = 2;  // Base adjustment value
     const complexityFactor = {
-        'Data Factory': 2,  // Data extraction and ETL processes
-        'Spark Jobs': 1.75,   // Data processing and transformation
-        'Data Science': 1.5,  // Data analysis and machine learning
-        'Ad-Hoc SQL Analytics': 1.25,  // SQL queries and reporting
-        'Power BI': 1,        // Data visualization and reporting
-        'Power BI Embedded': 1,  // Embedded analytics
-        'Real-Time Intelligence': 2,  // Real-time data processing
-        'Eventstream': 5,     // Event-driven data processing
-        'Microsoft Fabric Databases': 2.5  // Database management and storage
+        'Data Factory': 0.2,  // Data extraction and ETL processes
+        'Spark Jobs': 0.175,   // Data processing and transformation
+        'Data Science': 0.15,  // Data analysis and machine learning
+        'Ad-Hoc SQL Analytics': 0.125,  // SQL queries and reporting
+        'Power BI': 0.1,        // Data visualization and reporting
+        'Power BI Embedded': 0.1,  // Embedded analytics
+        'Real-Time Intelligence': 0.2,  // Real-time data processing
+        'Eventstream': 0.5,     // Event-driven data processing
+        'Microsoft Fabric Databases': 0.25  // Database management and storage
     };
 
-    // Adjust SKU based on selected workloads using a random forest model and external data
+    // Adjust SKU based on selected workloads
     workloads.forEach(workload => {
         if (complexityFactor[workload]) {
-            sku += baseAdjustment * complexityFactor[workload] * 0.8 + externalData.workloadAdjustment;
+            sku += baseAdjustment * complexityFactor[workload];
         }
     });
 
     return sku;
 }
 
-function adjustForCopilot(sku, copilotEnabled, externalData) {
-    // Adjust SKU if Copilot is enabled using a random forest model and external data
+function adjustForCopilot(sku, copilotEnabled) {
+    // Adjust SKU if Copilot is enabled
     if (copilotEnabled) {
-        sku = Math.max(sku, 64) + externalData.copilotAdjustment;
+        sku = Math.max(sku, 64);
     }
     return sku;
 }
 
-function adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeriod, dataComplexity, userCount, externalData) {
+function adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeriod, dataComplexity) {
     const refreshFrequencyAdjustments = {
-        'hourly': 7,  // Higher adjustment for more frequent data refreshes
-        'daily': 5,
-        'weekly': 1
+        'hourly': 0.7,  // Higher adjustment for more frequent data refreshes
+        'daily': 0.5,
+        'weekly': 0.1
     };
 
     const retentionPeriodAdjustments = {
@@ -121,47 +120,29 @@ function adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeri
     };
 
     const complexityAdjustments = {
-        'simple': 1,  // Lower adjustment for simpler data
-        'moderate': 2.5,
-        'complex': 5  // Higher adjustment for more complex data
+        'simple': 0.5,  // Lower adjustment for simpler data
+        'moderate': 1.5,
+        'complex': 2  // Higher adjustment for more complex data
     };
 
-    // Adjust SKU based on additional factors using a random forest model and external data
+    // Adjust SKU based on additional factors
     sku += refreshFrequencyAdjustments[dataRefreshFrequency] || 0;
     sku += retentionPeriodAdjustments[dataRetentionPeriod] || 0;
     sku += complexityAdjustments[dataComplexity] || 0;
-    sku += userCount * 0.1;  // Adjusts for the number of users
-    sku += externalData.additionalFactorsAdjustment;
 
     return sku;
 }
 
-function adjustForStorage(sku, dataSize, externalData) {
-    // Adjust SKU by 5% of the data size using a random forest model and external data
-    const storageAdjustment = dataSize * 0.05 + externalData.storageAdjustment;
+function adjustForStorage(sku, dataSize) {
+    // Adjust SKU by 0.5% of the data size
+    const storageAdjustment = dataSize * 0.005;
     return sku + storageAdjustment;
 }
 
-function adjustForDemandForecasting(sku, externalData) {
-    // Example of a simple linear regression model for demand forecasting
-    const historicalData = [100, 120, 130, 150, 170];  // Example historical data
-    const forecastedDemand = linearRegression(historicalData);
-    const demandAdjustment = forecastedDemand * 0.01 + externalData.demandAdjustment;  // Adjust SKU based on forecasted demand
+function adjustForDemandForecasting(sku) {
+    // Simple adjustment for demand forecasting
+    const demandAdjustment = sku * 0.01;  // Adjust based on SKU value
     return sku + demandAdjustment;
-}
-
-function linearRegression(data) {
-    const n = data.length;
-    const sumX = data.reduce((a, b) => a + b, 0);
-    const sumY = data.reduce((a, b) => a + b, 0);
-    const sumXY = data.reduce((sum, value, index) => sum + value * index, 0);
-    const sumX2 = data.reduce((sum, value) => sum + value * value, 0);
-
-    const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-    const intercept = (sumY - slope * sumX) / n;
-
-    // Forecast the next value
-    return slope * n + intercept;
 }
 
 function determineSKU(sku) {
