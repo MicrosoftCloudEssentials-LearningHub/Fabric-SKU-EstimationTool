@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         element.addEventListener('change', () => {
             // Display a message when a parameter is changed
             document.getElementById('result').innerHTML = `
-                <p>A parameter for the estimations was changed. Please click on "Calculate SKU" again.</p>
+                <p>A parameter for the estimations was changed. Please click on "Generate SKU" again.</p>
             `;
         });
     });
@@ -24,7 +24,6 @@ async function calculateSKU() {
     const numTables = parseInt(document.getElementById('numTables').value);
     const copilotEnabled = document.getElementById('copilotEnabled').value === 'yes';
     const dataRefreshFrequency = document.getElementById('dataRefreshFrequency').value;
-    const peakUsageTimes = document.getElementById('peakUsageTimes').value;
     const dataRetentionPeriod = document.getElementById('dataRetentionPeriod').value;
     const userCount = parseInt(document.getElementById('userCount').value);
     const dataComplexity = document.getElementById('dataComplexity').value;
@@ -56,6 +55,9 @@ async function calculateSKU() {
 function calculateBaseSKU(dataSize, batchCycles, numTables, externalData) {
     const baseSku = 2;  // Base SKU value for F2
     // Calculate base SKU based on data size, batch cycles, number of tables, and external data
+    // dataSize * 0.005: Adjusts for the impact of data size
+    // batchCycles * 2.5: Adjusts for the impact of batch cycles
+    // numTables * 0.05: Adjusts for the impact of the number of tables (reduced impact)
     return baseSku + dataSize * 0.005 + batchCycles * 2.5 + numTables * 0.05 + externalData.baseAdjustment;
 }
 
@@ -76,7 +78,8 @@ function adjustForWorkloads(sku, workloads, externalData) {
     // Adjust SKU based on selected workloads using a random forest model and external data
     workloads.forEach(workload => {
         if (complexityFactor[workload]) {
-            sku += baseAdjustment * complexityFactor[workload] * 0.8 + externalData.workloadAdjustment;  // Adjusting for overlapping CUs
+            // baseAdjustment * complexityFactor[workload] * 0.8: Adjusts for overlapping compute units (CUs)
+            sku += baseAdjustment * complexityFactor[workload] * 0.8 + externalData.workloadAdjustment;
         }
     });
 
@@ -86,35 +89,35 @@ function adjustForWorkloads(sku, workloads, externalData) {
 function adjustForCopilot(sku, copilotEnabled, externalData) {
     // Adjust SKU if Copilot is enabled using a random forest model and external data
     if (copilotEnabled) {
-        sku = Math.max(sku, 64) + 12.5 + externalData.copilotAdjustment;
+        sku = Math.max(sku, 64) + externalData.copilotAdjustment;
     }
     return sku;
 }
 
 function adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeriod, dataComplexity, userCount, externalData) {
     const refreshFrequencyAdjustments = {
-        'hourly': 7,
-        'daily': 1,
+        'hourly': 7,  // Higher adjustment for more frequent data refreshes
+        'daily': 5,
         'weekly': 1
     };
 
     const retentionPeriodAdjustments = {
-        '1 year': 0.25,
-        '5 years': 5,
-        '10 years': 10
+        '1 year': 0.25,  // Lower adjustment for shorter retention periods
+        '5 years': 0.75,
+        '10 years': 1
     };
 
     const complexityAdjustments = {
-        'simple': 2,
-        'moderate': 5,
-        'complex': 10
+        'simple': 1,  // Lower adjustment for simpler data
+        'moderate': 2.5,
+        'complex': 5  // Higher adjustment for more complex data
     };
 
     // Adjust SKU based on additional factors using a random forest model and external data
     sku += refreshFrequencyAdjustments[dataRefreshFrequency] || 0;
     sku += retentionPeriodAdjustments[dataRetentionPeriod] || 0;
     sku += complexityAdjustments[dataComplexity] || 0;
-    sku += userCount * 0.1;
+    sku += userCount * 0.1;  // Adjusts for the number of users
     sku += externalData.additionalFactorsAdjustment;
 
     return sku;
@@ -150,7 +153,6 @@ function linearRegression(data) {
 
 function determineSKU(sku) {
     let recommendedSku, capacityUnits, cuUse30Sec;
-
     // Determine the recommended SKU and capacity units based on the calculated SKU
     if (sku <= 2) {
         recommendedSku = "F2";
@@ -196,6 +198,13 @@ function determineSKU(sku) {
         recommendedSku = "F2048";
         capacityUnits = 2048;
         cuUse30Sec = 61440;
+    }
+
+    // Ensure certain workloads are only available starting from F64
+    if (sku < 64) {
+        recommendedSku = "F64";
+        capacityUnits = 64;
+        cuUse30Sec = 1920;
     }
 
     return { recommendedSku, capacityUnits, cuUse30Sec };
