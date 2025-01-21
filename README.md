@@ -14,6 +14,12 @@ Last updated: 2025-01-16
 > [!IMPORTANT]
 > Please note that `these demos are intended as a guide and are based on my personal experiences. For official guidance, support, or more detailed information, please refer to Microsoft's official documentation or contact Microsoft directly`: [Microsoft Sales and Support](https://support.microsoft.com/contactus?ContactUsExperienceEntryPointAssetId=S.HP.SMC-HOME)
 
+## Overview
+
+- index.html: This file contains the structure and content of the web page. It includes the form for user inputs, labels, and a section to display the results. It also links to the CSS file for styling and the JavaScript file for functionality.
+- styles.css: This file contains the styles for the web page. It defines the appearance of the elements, such as the layout, colors, fonts, and spacing. It ensures the web page looks visually appealing and is easy to use.
+- script.js:  This file contains the JavaScript code that handles the logic for calculating the Fabric SKU based on user inputs. It processes the input data, performs the calculations, and updates the web page with the results.
+
 ## References 
 
 - [Announcing New Recruitment for the Private Preview of Microsoft Fabric SKU Estimator](https://blog.fabric.microsoft.com/en-us/blog/announcing-new-recruitment-for-the-private-preview-of-microsoft-fabric-sku-estimator?ft=All)
