@@ -41,7 +41,6 @@ async function calculateSKU() {
     const numTables = parseInt(document.getElementById('numTables').value);
     const copilotEnabled = document.getElementById('copilotEnabled').value === 'yes';
     const dataRefreshFrequency = document.getElementById('dataRefreshFrequency').value;
-    const dataRetentionPeriod = document.getElementById('dataRetentionPeriod').value;
     const dataComplexity = document.getElementById('dataComplexity').value;
 
     // Get selected workloads
@@ -57,7 +56,7 @@ async function calculateSKU() {
     let sku = calculateBaseSKU(dataSize, batchCycles, numTables, externalData);
     sku = adjustForWorkloads(sku, workloads);
     sku = adjustForCopilot(sku, copilotEnabled);
-    sku = adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeriod, dataComplexity);
+    sku = adjustForAdditionalFactors(sku, dataRefreshFrequency, dataComplexity);
     sku = adjustForStorage(sku, dataSize);
     sku = adjustForDemandForecasting(sku);
 
@@ -106,17 +105,11 @@ function adjustForCopilot(sku, copilotEnabled) {
     return sku;
 }
 
-function adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeriod, dataComplexity) {
+function adjustForAdditionalFactors(sku, dataRefreshFrequency, dataComplexity) {
     const refreshFrequencyAdjustments = {
         'hourly': 0.7,  // Higher adjustment for more frequent data refreshes
         'daily': 0.5,
         'weekly': 0.1
-    };
-
-    const retentionPeriodAdjustments = {
-        '1 year': 0.25,  // Lower adjustment for shorter retention periods
-        '5 years': 0.75,
-        '10 years': 1
     };
 
     const complexityAdjustments = {
@@ -127,7 +120,6 @@ function adjustForAdditionalFactors(sku, dataRefreshFrequency, dataRetentionPeri
 
     // Adjust SKU based on additional factors
     sku += refreshFrequencyAdjustments[dataRefreshFrequency] || 0;
-    sku += retentionPeriodAdjustments[dataRetentionPeriod] || 0;
     sku += complexityAdjustments[dataComplexity] || 0;
 
     return sku;
@@ -203,7 +195,25 @@ function displayResult(recommendedSku, capacityUnits, cuUse30Sec) {
         <h2>Recommended Fabric SKU: ${recommendedSku}</h2>
         <p>Capacity Units (CU): ${capacityUnits}</p>
         <p>30-second CU use: ${cuUse30Sec}</p>
+        <p>${getSkuContext(recommendedSku)}</p>
     `;
+}
+
+function getSkuContext(sku) {
+    const context = {
+        "F2": "Suitable for small-scale development and testing environments.",
+        "F4": "Ideal for moderate development workloads and small production environments.",
+        "F8": "Good for larger development environments and moderate production workloads.",
+        "F16": "Suitable for high-demand development and moderate production environments.",
+        "F32": "Ideal for large-scale development and high-demand production workloads.",
+        "F64": "Best for very large development environments and high-demand production workloads.",
+        "F128": "Suitable for enterprise-level development and large-scale production environments.",
+        "F256": "Ideal for very large enterprise environments with high compute requirements.",
+        "F512": "Best for extremely large enterprise environments with very high compute needs.",
+        "F1024": "Suitable for massive enterprise environments with extensive compute requirements.",
+        "F2048": "Ideal for the largest enterprise environments with the highest compute demands."
+    };
+    return context[sku] || "Recommended for specific high-demand use cases.";
 }
 
 function clearForm() {
