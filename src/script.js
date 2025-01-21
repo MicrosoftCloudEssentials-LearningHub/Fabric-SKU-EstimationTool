@@ -8,6 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
     });
+
+    // Add event listeners for tooltips
+    document.querySelectorAll('.info-icon').forEach(icon => {
+        icon.addEventListener('click', (event) => {
+            const tooltipId = event.target.getAttribute('onclick').match(/'([^']+)'/)[1];
+            const tooltip = document.getElementById(tooltipId);
+            tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 });
 
 async function fetchExternalData() {
@@ -55,9 +64,6 @@ async function calculateSKU() {
 function calculateBaseSKU(dataSize, batchCycles, numTables, externalData) {
     const baseSku = 2;  // Base SKU value for F2
     // Calculate base SKU based on data size, batch cycles, number of tables, and external data
-    // dataSize * 0.005: Adjusts for the impact of data size
-    // batchCycles * 2.5: Adjusts for the impact of batch cycles
-    // numTables * 0.05: Adjusts for the impact of the number of tables (reduced impact)
     return baseSku + dataSize * 0.005 + batchCycles * 2.5 + numTables * 0.05 + externalData.baseAdjustment;
 }
 
@@ -78,7 +84,6 @@ function adjustForWorkloads(sku, workloads, externalData) {
     // Adjust SKU based on selected workloads using a random forest model and external data
     workloads.forEach(workload => {
         if (complexityFactor[workload]) {
-            // baseAdjustment * complexityFactor[workload] * 0.8: Adjusts for overlapping compute units (CUs)
             sku += baseAdjustment * complexityFactor[workload] * 0.8 + externalData.workloadAdjustment;
         }
     });
