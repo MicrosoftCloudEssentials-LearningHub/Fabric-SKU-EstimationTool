@@ -14,6 +14,11 @@ Last updated: 2025-01-16
 > [!IMPORTANT]
 > Please note that `these demos are intended as a guide and are based on my personal experiences. For official guidance, support, or more detailed information, please refer to Microsoft's official documentation or contact Microsoft directly`: [Microsoft Sales and Support](https://support.microsoft.com/contactus?ContactUsExperienceEntryPointAssetId=S.HP.SMC-HOME)
 
+## References 
+
+- [Announcing New Recruitment for the Private Preview of Microsoft Fabric SKU Estimator](https://blog.fabric.microsoft.com/en-us/blog/announcing-new-recruitment-for-the-private-preview-of-microsoft-fabric-sku-estimator?ft=All)
+- [Announcing the Fabric Roadmap](https://blog.fabric.microsoft.com/en-us/blog/announcing-the-fabric-roadmap?ft=All)
+
 <div align="center">
   <h3 style="color: #4CAF50;">Total Visitors</h3>
   <img src="https://profile-counter.glitch.me/brown9804/count.svg" alt="Visitor Count" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
