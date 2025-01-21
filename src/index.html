@@ -13,24 +13,25 @@
         <div class="content">
             <div class="left-pane">
                 <form id="skuForm">
+                    <h2>Data Information</h2>
+                    <label for="dataSize">Total Size of Data When Compressed (GB): <span class="info-icon" onclick="showTooltip('dataSizeTooltip')">ℹ️</span></label>
+                    <input type="number" id="dataSize" name="dataSize" step="0.01">
+                    <div id="dataSizeTooltip" class="tooltip">Enter the total size of your data in gigabytes. This helps determine the storage requirements.</div>
+
+                    <label for="batchCycles">Number of Daily Batch Cycles: <span class="info-icon" onclick="showTooltip('batchCyclesTooltip')">ℹ️</span></label>
+                    <input type="number" id="batchCycles" name="batchCycles">
+                    <div id="batchCyclesTooltip" class="tooltip">Enter the number of batch cycles your data processing requires. This affects the compute resources needed.</div>
+
+                    <label for="numTables">Number of Tables Across All Data Sources: <span class="info-icon" onclick="showTooltip('numTablesTooltip')">ℹ️</span></label>
+                    <input type="number" id="numTables" name="numTables">
+                    <div id="numTablesTooltip" class="tooltip">Enter the number of tables in your database. Note: This parameter has a minimal impact on SKU size.</div>
+
                     <label for="copilotEnabled">Is Copilot Enabled? <span class="info-icon" onclick="showTooltip('copilotTooltip')">ℹ️</span></label>
                     <select id="copilotEnabled" name="copilotEnabled">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                     <div id="copilotTooltip" class="tooltip">Select whether Copilot is enabled for your workload. Enabling Copilot can increase the SKU size due to additional compute requirements.</div>
-
-                    <label for="batchCycles">Number of Daily Insights Cycles: <span class="info-icon" onclick="showTooltip('batchCyclesTooltip')">ℹ️</span></label>
-                    <input type="number" id="batchCycles" name="batchCycles">
-                    <div id="batchCyclesTooltip" class="tooltip">Enter the number of batch cycles your data processing requires. This affects the compute resources needed.</div>
-
-                    <label for="dataSize">Total Size of Data When Compressed (GB): <span class="info-icon" onclick="showTooltip('dataSizeTooltip')">ℹ️</span></label>
-                    <input type="number" id="dataSize" name="dataSize" step="0.01">
-                    <div id="dataSizeTooltip" class="tooltip">Enter the total size of your data in gigabytes. This helps determine the storage requirements.</div>
-
-                    <label for="numTables">Number of Tables Across All Data Sources: <span class="info-icon" onclick="showTooltip('numTablesTooltip')">ℹ️</span></label>
-                    <input type="number" id="numTables" name="numTables">
-                    <div id="numTablesTooltip" class="tooltip">Enter the number of tables in your database. Note: This parameter has a minimal impact on SKU size.</div>
 
                     <label for="dataRefreshFrequency">Data Refresh Frequency: <span class="info-icon" onclick="showTooltip('dataRefreshFrequencyTooltip')">ℹ️</span></label>
                     <select id="dataRefreshFrequency" name="dataRefreshFrequency">
@@ -83,6 +84,9 @@
                 </form>
             </div>
             <div class="right-pane">
+                <h2>Estimation</h2>
+                <p>Enter the information requested. We'll estimate a Fabric SKU for you, based on your capacity requirements.</p>
+                <p>Start your free Microsoft Fabric trial now. <a href="#">Learn more</a>.</p>
                 <div id="result"></div>
             </div>
         </div>
