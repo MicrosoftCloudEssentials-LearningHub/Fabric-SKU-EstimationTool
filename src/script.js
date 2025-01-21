@@ -36,13 +36,13 @@ function calculateSKU() {
 
 function calculateBaseSKU(dataSize, batchCycles, numTables) {
     const baseSku = 2;  // Base SKU value for F2
-    return baseSku + dataSize * 0.005 + batchCycles * 2.5 + numTables * 0.25;
+    return baseSku + dataSize * 0.005 + batchCycles * 2.5 + numTables * 0.05;  // Reduced impact of numTables
 }
 
 function adjustForWorkloads(sku, workloads) {
     const baseAdjustment = 2;  // Base adjustment value
     const complexityFactor = {
-        'Data Factory': 2.5,  // Data extraction and ETL processes
+        'Data Factory': 2,  // Data extraction and ETL processes
         'Spark Jobs': 1.75,   // Data processing and transformation
         'Data Science': 1.5,  // Data analysis and machine learning
         'Ad-Hoc SQL Analytics': 1.25,  // SQL queries and reporting
@@ -50,7 +50,7 @@ function adjustForWorkloads(sku, workloads) {
         'Power BI Embedded': 1,  // Embedded analytics
         'Real-Time Intelligence': 2,  // Real-time data processing
         'Eventstream': 5,     // Event-driven data processing
-        'Microsoft Fabric Databases': 7.5  // Database management and storage
+        'Microsoft Fabric Databases': 2.5  // Database management and storage
     };
 
     workloads.forEach(workload => {
