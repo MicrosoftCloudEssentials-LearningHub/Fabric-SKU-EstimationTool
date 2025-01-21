@@ -33,6 +33,8 @@ form {
 .form-group {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    border-radius: 4px;
 }
 
 label {
@@ -67,6 +69,7 @@ fieldset {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;
+    background-color: #f9f9f9;
 }
 
 legend {
@@ -87,4 +90,23 @@ legend {
     border: 1px solid #b3d4fc;
     border-radius: 4px;
     color: #333;
+}
+
+.colored-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 4px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+.colored-box.blue {
+    background-color: #e3f2fd; /* Light blue background */
+    border: 1px solid #90caf9; /* Blue border */
+}
+
+.colored-box.yellow {
+    background-color: #ffeb3b; /* Yellow background */
+    border: 1px solid #fbc02d; /* Dark yellow border */
 }
