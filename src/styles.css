@@ -35,6 +35,8 @@ form {
     flex-direction: column;
     padding: 10px;
     border-radius: 4px;
+    background-color: #e3f2fd; /* Light blue background */
+    border: 1px solid #90caf9; /* Blue border */
 }
 
 label {
