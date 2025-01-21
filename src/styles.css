@@ -1,14 +1,16 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
 .container {
-    max-width: 1200px;
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -16,55 +18,57 @@ h1 {
     color: #333;
 }
 
-p {
-    text-align: center;
-    color: #666;
-}
-
 .content {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 .left-pane, .right-pane {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 48%;
 }
 
-h2 {
-    color: #333;
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    display: block;
     margin-top: 10px;
-    color: #333;
+    font-weight: bold;
 }
 
 input, select {
-    width: 100%;
-    padding: 10px;
     margin-top: 5px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
+    margin-top: 20px;
+    padding: 10px;
     background-color: #0078d4;
     color: #fff;
-    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 button:hover {
     background-color: #005a9e;
+}
+
+.info-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #0078d4;
+    color: #fff;
+    cursor: default;
+    margin-left: 5px;
 }
 
 .tooltip {
@@ -77,27 +81,6 @@ button:hover {
     z-index: 1;
 }
 
-.info-icon {
-    cursor: pointer;
-    color: #0078d4;
-}
-
-fieldset {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    margin-top: 10px;
-}
-
-legend {
-    color: #333;
-}
-
-a {
-    color: #0078d4;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
+label:hover .tooltip {
+    display: block;
 }
