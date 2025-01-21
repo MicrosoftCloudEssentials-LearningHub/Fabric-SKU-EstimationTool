@@ -14,26 +14,26 @@
             <div class="left-pane">
                 <form id="skuForm">
                     <h2>Data Information</h2>
-                    <label for="dataSize">Total Size of Data When Compressed (GB): <span class="info-icon" onclick="showTooltip('dataSizeTooltip')">ℹ️</span></label>
+                    <label for="dataSize">Total Size of Data When Compressed (GB): <span class="info-icon" onmouseover="showTooltip('dataSizeTooltip')">ℹ️</span></label>
                     <input type="number" id="dataSize" name="dataSize" step="0.01">
                     <div id="dataSizeTooltip" class="tooltip">Enter the total size of your data in gigabytes. This helps determine the storage requirements.</div>
 
-                    <label for="batchCycles">Number of Daily Batch Cycles: <span class="info-icon" onclick="showTooltip('batchCyclesTooltip')">ℹ️</span></label>
+                    <label for="batchCycles">Number of Daily Batch Cycles: <span class="info-icon" onmouseover="showTooltip('batchCyclesTooltip')">ℹ️</span></label>
                     <input type="number" id="batchCycles" name="batchCycles">
                     <div id="batchCyclesTooltip" class="tooltip">Enter the number of batch cycles your data processing requires. This affects the compute resources needed.</div>
 
-                    <label for="numTables">Number of Tables Across All Data Sources: <span class="info-icon" onclick="showTooltip('numTablesTooltip')">ℹ️</span></label>
+                    <label for="numTables">Number of Tables Across All Data Sources: <span class="info-icon" onmouseover="showTooltip('numTablesTooltip')">ℹ️</span></label>
                     <input type="number" id="numTables" name="numTables">
                     <div id="numTablesTooltip" class="tooltip">Enter the number of tables in your database. Note: This parameter has a minimal impact on SKU size.</div>
 
-                    <label for="copilotEnabled">Is Copilot Enabled? <span class="info-icon" onclick="showTooltip('copilotTooltip')">ℹ️</span></label>
+                    <label for="copilotEnabled">Is Copilot Enabled? <span class="info-icon" onmouseover="showTooltip('copilotTooltip')">ℹ️</span></label>
                     <select id="copilotEnabled" name="copilotEnabled">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                     <div id="copilotTooltip" class="tooltip">Select whether Copilot is enabled for your workload. Enabling Copilot can increase the SKU size due to additional compute requirements.</div>
 
-                    <label for="dataRefreshFrequency">Data Refresh Frequency: <span class="info-icon" onclick="showTooltip('dataRefreshFrequencyTooltip')">ℹ️</span></label>
+                    <label for="dataRefreshFrequency">Data Refresh Frequency: <span class="info-icon" onmouseover="showTooltip('dataRefreshFrequencyTooltip')">ℹ️</span></label>
                     <select id="dataRefreshFrequency" name="dataRefreshFrequency">
                         <option value="hourly">Hourly</option>
                         <option value="daily">Daily</option>
@@ -41,7 +41,7 @@
                     </select>
                     <div id="dataRefreshFrequencyTooltip" class="tooltip">Select how often your data is refreshed. More frequent refreshes require more compute resources.</div>
 
-                    <label for="dataRetentionPeriod">Data Retention Period (in Years): <span class="info-icon" onclick="showTooltip('dataRetentionPeriodTooltip')">ℹ️</span></label>
+                    <label for="dataRetentionPeriod">Data Retention Period (in Years): <span class="info-icon" onmouseover="showTooltip('dataRetentionPeriodTooltip')">ℹ️</span></label>
                     <select id="dataRetentionPeriod" name="dataRetentionPeriod">
                         <option value="1 year">1 Year</option>
                         <option value="5 years">5 Years</option>
@@ -49,11 +49,11 @@
                     </select>
                     <div id="dataRetentionPeriodTooltip" class="tooltip">Select the period for which data is retained. Longer retention periods may require more storage.</div>
 
-                    <label for="userCount">Total User Count: <span class="info-icon" onclick="showTooltip('userCountTooltip')">ℹ️</span></label>
+                    <label for="userCount">Total User Count: <span class="info-icon" onmouseover="showTooltip('userCountTooltip')">ℹ️</span></label>
                     <input type="number" id="userCount" name="userCount">
                     <div id="userCountTooltip" class="tooltip">Enter the number of users accessing the system. More users can increase the compute and storage requirements.</div>
 
-                    <label for="dataComplexity">Data Complexity: <span class="info-icon" onclick="showTooltip('dataComplexityTooltip')">ℹ️</span></label>
+                    <label for="dataComplexity">Data Complexity: <span class="info-icon" onmouseover="showTooltip('dataComplexityTooltip')">ℹ️</span></label>
                     <select id="dataComplexity" name="dataComplexity">
                         <option value="simple">Simple</option>
                         <option value="moderate">Moderate</option>
@@ -63,19 +63,19 @@
 
                     <fieldset id="workloads">
                         <legend>Workloads:</legend>
-                        <label><input type="checkbox" value="Data Analysis" onclick="showTooltip('dataAnalysisTooltip')"> Data Analysis</label>
+                        <label><input type="checkbox" value="Data Analysis" onmouseover="showTooltip('dataAnalysisTooltip')"> Data Analysis</label>
                         <div id="dataAnalysisTooltip" class="tooltip">Data extraction and ETL processes.</div>
-                        <label><input type="checkbox" value="Clear AI/ML Analysis" onclick="showTooltip('clearAIMLTooltip')"> Clear AI/ML Analysis</label>
+                        <label><input type="checkbox" value="Clear AI/ML Analysis" onmouseover="showTooltip('clearAIMLTooltip')"> Clear AI/ML Analysis</label>
                         <div id="clearAIMLTooltip" class="tooltip">Data processing and transformation using Spark.</div>
-                        <label><input type="checkbox" value="Azure SQL Analysis" onclick="showTooltip('azureSQLTooltip')"> Azure SQL Analysis</label>
+                        <label><input type="checkbox" value="Azure SQL Analysis" onmouseover="showTooltip('azureSQLTooltip')"> Azure SQL Analysis</label>
                         <div id="azureSQLTooltip" class="tooltip">Data analysis and machine learning tasks.</div>
-                        <label><input type="checkbox" value="Power BI Embedded" onclick="showTooltip('powerBITooltip')"> Power BI Embedded</label>
+                        <label><input type="checkbox" value="Power BI Embedded" onmouseover="showTooltip('powerBITooltip')"> Power BI Embedded</label>
                         <div id="powerBITooltip" class="tooltip">SQL queries and reporting.</div>
-                        <label><input type="checkbox" value="Real-Time Intelligence" onclick="showTooltip('realTimeTooltip')"> Real-Time Intelligence</label>
+                        <label><input type="checkbox" value="Real-Time Intelligence" onmouseover="showTooltip('realTimeTooltip')"> Real-Time Intelligence</label>
                         <div id="realTimeTooltip" class="tooltip">Data visualization and reporting using Power BI.</div>
-                        <label><input type="checkbox" value="Unstructured" onclick="showTooltip('unstructuredTooltip')"> Unstructured</label>
+                        <label><input type="checkbox" value="Unstructured" onmouseover="showTooltip('unstructuredTooltip')"> Unstructured</label>
                         <div id="unstructuredTooltip" class="tooltip">Embedded analytics using Power BI.</div>
-                        <label><input type="checkbox" value="Microsoft Fabric Database" onclick="showTooltip('fabricDatabaseTooltip')"> Microsoft Fabric Database</label>
+                        <label><input type="checkbox" value="Microsoft Fabric Database" onmouseover="showTooltip('fabricDatabaseTooltip')"> Microsoft Fabric Database</label>
                         <div id="fabricDatabaseTooltip" class="tooltip">Real-time data processing and analytics.</div>
                     </fieldset>
 

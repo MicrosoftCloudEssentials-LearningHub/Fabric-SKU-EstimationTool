@@ -11,10 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listeners for tooltips
     document.querySelectorAll('.info-icon').forEach(icon => {
-        icon.addEventListener('click', (event) => {
-            const tooltipId = event.target.getAttribute('onclick').match(/'([^']+)'/)[1];
+        icon.addEventListener('mouseover', (event) => {
+            const tooltipId = event.target.getAttribute('onmouseover').match(/'([^']+)'/)[1];
             const tooltip = document.getElementById(tooltipId);
-            tooltip.style.display = tooltip.style.display === 'block' ? 'none' : 'block';
+            tooltip.style.display = 'block';
+        });
+        icon.addEventListener('mouseout', (event) => {
+            const tooltipId = event.target.getAttribute('onmouseover').match(/'([^']+)'/)[1];
+            const tooltip = document.getElementById(tooltipId);
+            tooltip.style.display = 'none';
         });
     });
 });
@@ -203,13 +208,6 @@ function determineSKU(sku) {
         recommendedSku = "F2048";
         capacityUnits = 2048;
         cuUse30Sec = 61440;
-    }
-
-    // Ensure certain workloads are only available starting from F64
-    if (sku < 64) {
-        recommendedSku = "F64";
-        capacityUnits = 64;
-        cuUse30Sec = 1920;
     }
 
     return { recommendedSku, capacityUnits, cuUse30Sec };
