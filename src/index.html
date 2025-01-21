@@ -10,64 +10,89 @@
     <div class="container">
         <h1>Microsoft Fabric SKU Helper - Illustrative Tool</h1>
         <p>This tool is for estimation purposes only. Please contact Microsoft sales for assistance with real case data and accurate recommendations.</p>
-        <form id="skuForm">
-            <label for="copilotEnabled">Is Copilot Enabled? <span class="info-icon" title="Select whether Copilot is enabled for your workload. Enabling Copilot can increase the SKU size due to additional compute requirements.">ℹ️</span></label>
-            <select id="copilotEnabled" name="copilotEnabled">
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-            </select>
+        
+        <div class="colored-box blue">
+            <form id="skuForm">
+                <div class="form-group">
+                    <label for="copilotEnabled">Is Copilot Enabled? <span class="info-icon" title="Select whether Copilot is enabled for your workload. Enabling Copilot can increase the SKU size due to additional compute requirements.">ℹ️</span></label>
+                    <select id="copilotEnabled" name="copilotEnabled">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
 
-            <label for="batchCycles">Number of Daily Batch Cycles: <span class="info-icon" title="Enter the number of batch cycles your data processing requires. This affects the compute resources needed.">ℹ️</span></label>
-            <input type="number" id="batchCycles" name="batchCycles">
+                <div class="form-group">
+                    <label for="batchCycles">Number of Daily Batch Cycles: <span class="info-icon" title="Enter the number of batch cycles your data processing requires. This affects the compute resources needed.">ℹ️</span></label>
+                    <input type="number" id="batchCycles" name="batchCycles">
+                </div>
 
-            <label for="dataSize">Total Size of Data When Compressed (GB): <span class="info-icon" title="Enter the total size of your data in gigabytes. This helps determine the storage requirements.">ℹ️</span></label>
-            <input type="number" id="dataSize" name="dataSize" step="0.01">
+                <div class="form-group">
+                    <label for="dataSize">Total Size of Data When Compressed (GB): <span class="info-icon" title="Enter the total size of your data in gigabytes. This helps determine the storage requirements.">ℹ️</span></label>
+                    <input type="number" id="dataSize" name="dataSize" step="0.01">
+                </div>
 
-            <label for="numTables">Number of Tables Across All Data Sources: <span class="info-icon" title="Enter the number of tables in your database. Note: This parameter has a minimal impact on SKU size.">ℹ️</span></label>
-            <input type="number" id="numTables" name="numTables">
+                <div class="form-group">
+                    <label for="numTables">Number of Tables Across All Data Sources: <span class="info-icon" title="Enter the number of tables in your database. Note: This parameter has a minimal impact on SKU size.">ℹ️</span></label>
+                    <input type="number" id="numTables" name="numTables">
+                </div>
 
-            <label for="dataRefreshFrequency">Data Refresh Frequency: <span class="info-icon" title="Select how often your data is refreshed. More frequent refreshes require more compute resources.">ℹ️</span></label>
-            <select id="dataRefreshFrequency" name="dataRefreshFrequency">
-                <option value="hourly">Hourly</option>
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-            </select>
+                <div class="form-group">
+                    <label for="dataRefreshFrequency">Data Refresh Frequency: <span class="info-icon" title="Select how often your data is refreshed. More frequent refreshes require more compute resources.">ℹ️</span></label>
+                    <select id="dataRefreshFrequency" name="dataRefreshFrequency">
+                        <option value="hourly">Hourly</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                </div>
 
-            <label for="dataRetentionPeriod">Data Retention Period: <span class="info-icon" title="Select the period for which data is retained. Longer retention periods may require more storage.">ℹ️</span></label>
-            <select id="dataRetentionPeriod" name="dataRetentionPeriod">
-                <option value="1 year">1 Year</option>
-                <option value="5 years">5 Years</option>
-                <option value="10 years">10 Years</option>
-            </select>
+                <div class="form-group">
+                    <label for="dataRetentionPeriod">Data Retention Period: <span class="info-icon" title="Select the period for which data is retained. Longer retention periods may require more storage.">ℹ️</span></label>
+                    <select id="dataRetentionPeriod" name="dataRetentionPeriod">
+                        <option value="1 year">1 Year</option>
+                        <option value="5 years">5 Years</option>
+                        <option value="10 years">10 Years</option>
+                    </select>
+                </div>
 
-            <label for="userCount">User Count: <span class="info-icon" title="Enter the number of users accessing the system. More users can increase the compute and storage requirements.">ℹ️</span></label>
-            <input type="number" id="userCount" name="userCount">
+                <div class="form-group">
+                    <label for="userCount">User Count: <span class="info-icon" title="Enter the number of users accessing the system. More users can increase the compute and storage requirements.">ℹ️</span></label>
+                    <input type="number" id="userCount" name="userCount">
+                </div>
 
-            <label for="dataComplexity">Data Complexity: <span class="info-icon" title="Select the complexity level of your data. More complex data requires more compute resources for processing.">ℹ️</span></label>
-            <select id="dataComplexity" name="dataComplexity">
-                <option value="simple">Simple</option>
-                <option value="moderate">Moderate</option>
-                <option value="complex">Complex</option>
-            </select>
+                <div class="form-group">
+                    <label for="dataComplexity">Data Complexity: <span class="info-icon" title="Select the complexity level of your data. More complex data requires more compute resources for processing.">ℹ️</span></label>
+                    <select id="dataComplexity" name="dataComplexity">
+                        <option value="simple">Simple</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="complex">Complex</option>
+                    </select>
+                </div>
 
-            <fieldset id="workloads">
-                <legend>Workloads:</legend>
-                <label><input type="checkbox" value="Data Factory" title="Data extraction and ETL processes."> Data Factory</label>
-                <label><input type="checkbox" value="Spark Jobs" title="Data processing and transformation using Spark."> Spark Jobs</label>
-                <label><input type="checkbox" value="Data Science" title="Data analysis and machine learning tasks."> Data Science</label>
-                <label><input type="checkbox" value="Ad-Hoc SQL Analytics" title="SQL queries and reporting."> Ad-Hoc SQL Analytics</label>
-                <label><input type="checkbox" value="Power BI" title="Data visualization and reporting using Power BI."> Power BI</label>
-                <label><input type="checkbox" value="Power BI Embedded" title="Embedded analytics using Power BI."> Power BI Embedded</label>
-                <label><input type="checkbox" value="Real-Time Intelligence" title="Real-time data processing and analytics."> Real-Time Intelligence</label>
-                <label><input type="checkbox" value="Eventstream" title="Event-driven data processing."> Eventstream</label>
-                <label><input type="checkbox" value="Microsoft Fabric Databases" title="Database management and storage using Microsoft Fabric."> Microsoft Fabric Databases</label>
-            </fieldset>
+                <fieldset id="workloads">
+                    <legend>Workloads:</legend>
+                    <label><input type="checkbox" value="Data Factory" title="Data extraction and ETL processes."> Data Factory</label>
+                    <label><input type="checkbox" value="Spark Jobs" title="Data processing and transformation using Spark."> Spark Jobs</label>
+                    <label><input type="checkbox" value="Data Science" title="Data analysis and machine learning tasks."> Data Science</label>
+                    <label><input type="checkbox" value="Ad-Hoc SQL Analytics" title="SQL queries and reporting."> Ad-Hoc SQL Analytics</label>
+                    <label><input type="checkbox" value="Power BI" title="Data visualization and reporting using Power BI."> Power BI</label>
+                    <label><input type="checkbox" value="Power BI Embedded" title="Embedded analytics using Power BI."> Power BI Embedded</label>
+                    <label><input type="checkbox" value="Real-Time Intelligence" title="Real-time data processing and analytics."> Real-Time Intelligence</label>
+                    <label><input type="checkbox" value="Eventstream" title="Event-driven data processing."> Eventstream</label>
+                    <label><input type="checkbox" value="Microsoft Fabric Databases" title="Database management and storage using Microsoft Fabric."> Microsoft Fabric Databases</label>
+                </fieldset>
 
-            <button type="button" onclick="calculateSKU()">Calculate SKU</button>
-            <button type="button" onclick="clearForm()">Clear</button>
-        </form>
+                <div class="form-group">
+                    <button type="button" onclick="calculateSKU()">Calculate SKU</button>
+                    <button type="button" onclick="clearForm()">Clear</button>
+                </div>
+            </form>
+        </div>
 
         <div id="result"></div>
+
+        <div class="colored-box yellow">
+            <p>Important: This is an illustrative tool. For accurate recommendations, please contact Microsoft sales.</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
