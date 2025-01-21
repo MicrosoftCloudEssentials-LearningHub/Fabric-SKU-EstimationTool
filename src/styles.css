@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
@@ -23,6 +23,15 @@ p {
     text-align: center;
     color: #666;
     font-size: 0.9em;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-pane, .right-pane {
+    width: 48%;
 }
 
 form {
