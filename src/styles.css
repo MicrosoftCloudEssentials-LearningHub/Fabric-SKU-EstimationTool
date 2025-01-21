@@ -1,17 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
 }
 
 .container {
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
 }
 
 h1 {
@@ -22,65 +19,52 @@ h1 {
 p {
     text-align: center;
     color: #666;
-    font-size: 0.9em;
 }
 
 .content {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .left-pane, .right-pane {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 48%;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+h2 {
+    color: #333;
 }
 
 label {
-    margin: 10px 0 5px;
-    color: #555;
+    display: block;
+    margin-top: 10px;
+    color: #333;
 }
 
-input, select, button {
+input, select {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-input[type="number"], select {
-    width: 100%;
-    box-sizing: border-box;
-}
-
 button {
-    background-color: #007BFF;
-    color: white;
+    background-color: #0078d4;
+    color: #fff;
+    padding: 10px 20px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #0056b3;
-}
-
-#result {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #e7f3e7;
-    border: 1px solid #d4e7d4;
-    border-radius: 4px;
-    color: #333;
-}
-
-.info-icon {
-    cursor: pointer;
-    font-size: 0.9em;
-    color: #007BFF;
-    margin-left: 5px;
+    background-color: #005a9e;
 }
 
 .tooltip {
@@ -91,17 +75,29 @@ button:hover {
     border-radius: 4px;
     position: absolute;
     z-index: 1;
-    width: 200px;
-    margin-top: 5px;
 }
 
-.tooltip::after {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent #333 transparent;
+.info-icon {
+    cursor: pointer;
+    color: #0078d4;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+legend {
+    color: #333;
+}
+
+a {
+    color: #0078d4;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
