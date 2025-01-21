@@ -48,14 +48,14 @@ input[type="number"], select {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #007BFF;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
 #result {
@@ -72,4 +72,27 @@ button:hover {
     font-size: 0.9em;
     color: #007BFF;
     margin-left: 5px;
+}
+
+.tooltip {
+    display: none;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    width: 200px;
+    margin-top: 5px;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
 }
