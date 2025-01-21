@@ -8,27 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         });
     });
-
-    // Add event listeners for tooltips
-    document.querySelectorAll('.info-icon').forEach(icon => {
-        icon.addEventListener('mouseover', (event) => {
-            const tooltipId = event.target.getAttribute('onmouseover').match(/'([^']+)'/)[1];
-            const tooltip = document.getElementById(tooltipId);
-            tooltip.style.display = 'block';
-        });
-        icon.addEventListener('mouseout', (event) => {
-            const tooltipId = event.target.getAttribute('onmouseover').match(/'([^']+)'/)[1];
-            const tooltip = document.getElementById(tooltipId);
-            tooltip.style.display = 'none';
-        });
-    });
 });
 
 async function fetchExternalData() {
-    // Example API call to fetch external data
-    const response = await fetch('https://api.example.com/data');
-    const data = await response.json();
-    return data;
+    const url = 'https://jsonplaceholder.typicode.com/posts/1'; // Example API endpoint
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        // Simulate adjustments based on fetched data
+        return {
+            baseAdjustment: data.userId,
+            workloadAdjustment: data.id,
+            copilotAdjustment: data.userId * 0.1,
+            additionalFactorsAdjustment: data.id * 0.2,
+            storageAdjustment: data.userId * 0.05,
+            demandAdjustment: data.id * 0.01
+        };
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        return { baseAdjustment: 0, workloadAdjustment: 0, copilotAdjustment: 0, additionalFactorsAdjustment: 0, storageAdjustment: 0, demandAdjustment: 0 };
+    }
 }
 
 async function calculateSKU() {
