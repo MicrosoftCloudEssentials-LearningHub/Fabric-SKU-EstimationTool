@@ -30,6 +30,11 @@ form {
     gap: 15px;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
 label {
     font-weight: bold;
     color: #333;
