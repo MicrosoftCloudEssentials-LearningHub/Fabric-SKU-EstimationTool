@@ -5,11 +5,11 @@ Costa Rica
 [![GitHub](https://img.shields.io/badge/--181717?logo=github&logoColor=ffffff)](https://github.com/)
 [brown9804](https://github.com/brown9804)
 
-Last updated: 2025-01-16
+Last updated: 2025-01-21
 
 ----------
 
-> This tool is for helping with Fabric SKU estimations and that it is an illustrative, non-official tool.
+> This tool is for helping with Fabric SKU estimations and that it is an illustrative, [non-official tool](https://microsoftcloudessentials-learninghub.github.io/Fabric-SKU-helper/).
 
 > [!IMPORTANT]
 > Please note that `these demos are intended as a guide and are based on my personal experiences. For official guidance, support, or more detailed information, please refer to Microsoft's official documentation or contact Microsoft directly`: [Microsoft Sales and Support](https://support.microsoft.com/contactus?ContactUsExperienceEntryPointAssetId=S.HP.SMC-HOME)
