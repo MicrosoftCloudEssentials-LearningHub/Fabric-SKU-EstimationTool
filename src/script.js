@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input, select').forEach(element => {
+        element.addEventListener('change', () => {
+            document.getElementById('result').innerHTML = `
+                <p>A parameter for the estimations was changed. Please click on "Calculate SKU" again.</p>
+            `;
+        });
+    });
+});
+
 function calculateSKU() {
     const dataSize = parseFloat(document.getElementById('dataSize').value);
     const batchCycles = parseInt(document.getElementById('batchCycles').value);
@@ -30,21 +40,22 @@ function calculateBaseSKU(dataSize, batchCycles, numTables) {
 }
 
 function adjustForWorkloads(sku, workloads) {
-    const workloadAdjustments = {
-        'Data Factory': 5,
-        'Spark Jobs': 6.25,
-        'Data Science': 2.5,
-        'Ad-Hoc SQL Analytics': 3.75,
-        'Power BI': 1.25,
-        'Power BI Embedded': 1.25,
-        'Real-Time Intelligence': 5,
-        'Eventstream': 5,
-        'Microsoft Fabric Databases': 7.5
+    const baseAdjustment = 2;  // Base adjustment value
+    const complexityFactor = {
+        'Data Factory': 2.5,  // Data extraction and ETL processes
+        'Spark Jobs': 1.75,   // Data processing and transformation
+        'Data Science': 1.5,  // Data analysis and machine learning
+        'Ad-Hoc SQL Analytics': 1.25,  // SQL queries and reporting
+        'Power BI': 1,        // Data visualization and reporting
+        'Power BI Embedded': 1,  // Embedded analytics
+        'Real-Time Intelligence': 2,  // Real-time data processing
+        'Eventstream': 5,     // Event-driven data processing
+        'Microsoft Fabric Databases': 7.5  // Database management and storage
     };
 
     workloads.forEach(workload => {
-        if (workloadAdjustments[workload]) {
-            sku += workloadAdjustments[workload];
+        if (complexityFactor[workload]) {
+            sku += baseAdjustment * complexityFactor[workload] * 0.8;  // Adjusting for overlapping CUs
         }
     });
 
@@ -143,4 +154,9 @@ function displayResult(recommendedSku, capacityUnits, cuUse30Sec) {
         <p>Capacity Units (CU): ${capacityUnits}</p>
         <p>30-second CU use: ${cuUse30Sec}</p>
     `;
+}
+
+function clearForm() {
+    document.getElementById('skuForm').reset();
+    document.getElementById('result').innerHTML = '';
 }

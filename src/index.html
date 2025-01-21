@@ -3,83 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microsoft Fabric SKU Helper - Illustrative Tool</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>SKU Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            margin-top: 5px;
+            padding: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Microsoft Fabric SKU Helper - Illustrative Tool</h1>
-        <p><strong>Disclaimer:</strong> This tool is intended for estimation purposes only. For real case data and accurate recommendations, please contact Microsoft sales for assistance.</p>
-        <form id="skuForm">
+    <h1>SKU Calculator</h1>
+    <form id="skuForm">
+        <label for="dataSize">Data Size (GB):</label>
+        <input type="number" id="dataSize" name="dataSize" step="0.01">
 
-            <label for="copilotEnabled">Is Copilot Enabled?</label>
-            <select id="copilotEnabled" name="copilotEnabled" required>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-          
-            <label for="batchCycles">Number of Daily Batch Cycles:</label>
-            <input type="number" id="batchCycles" name="batchCycles" required>
+        <label for="batchCycles">Batch Cycles:</label>
+        <input type="number" id="batchCycles" name="batchCycles">
 
-            <label for="dataSize">Total Size of Data When Compressed (GB):</label>
-            <input type="number" id="dataSize" name="dataSize" required>
+        <label for="numTables">Number of Tables:</label>
+        <input type="number" id="numTables" name="numTables">
 
-            <label for="numTables">Number of Tables Across All Data Sources:</label>
-            <input type="number" id="numTables" name="numTables" required>
+        <label for="copilotEnabled">Copilot Enabled:</label>
+        <select id="copilotEnabled" name="copilotEnabled">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+        </select>
 
-            <label for="dataRefreshFrequency">Data Refresh Frequency:</label>
-            <select id="dataRefreshFrequency" name="dataRefreshFrequency" required>
-                <option value="hourly">Hourly</option>
-                <option value="daily">Daily</option>
-                <option value="weekly">Weekly</option>
-            </select>
+        <label for="dataRefreshFrequency">Data Refresh Frequency:</label>
+        <select id="dataRefreshFrequency" name="dataRefreshFrequency">
+            <option value="hourly">Hourly</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+        </select>
 
-            <label for="peakUsageTimes">Peak Usage Times:</label>
-            <input type="text" id="peakUsageTimes" name="peakUsageTimes" placeholder="e.g., 9 AM - 12 PM" required>
+        <label for="peakUsageTimes">Peak Usage Times:</label>
+        <input type="text" id="peakUsageTimes" name="peakUsageTimes">
 
-            <label for="dataRetentionPeriod">Data Retention Period:</label>
-            <select id="dataRetentionPeriod" name="dataRetentionPeriod" required>
-                <option value="1 year">1 Year</option>
-                <option value="5 years">5 Years</option>
-                <option value="10 years">10 Years</option>
-            </select>
+        <label for="dataRetentionPeriod">Data Retention Period:</label>
+        <select id="dataRetentionPeriod" name="dataRetentionPeriod">
+            <option value="1 year">1 Year</option>
+            <option value="5 years">5 Years</option>
+            <option value="10 years">10 Years</option>
+        </select>
 
-            <label for="userCount">Number of Concurrent Users:</label>
-            <input type="number" id="userCount" name="userCount" required>
+        <label for="userCount">User Count:</label>
+        <input type="number" id="userCount" name="userCount">
 
-            <label for="dataComplexity">Data Complexity:</label>
-            <select id="dataComplexity" name="dataComplexity" required>
-                <option value="simple">Simple</option>
-                <option value="moderate">Moderate</option>
-                <option value="complex">Complex</option>
-            </select>
+        <label for="dataComplexity">Data Complexity:</label>
+        <select id="dataComplexity" name="dataComplexity">
+            <option value="simple">Simple</option>
+            <option value="moderate">Moderate</option>
+            <option value="complex">Complex</option>
+        </select>
 
-            <label for="workloads">Select Workloads and Features:</label>
-            <div id="workloads">
-                <input type="checkbox" id="dataFactory" name="workloads" value="Data Factory">
-                <label for="dataFactory">Data Factory</label><br>
-                <input type="checkbox" id="sparkJobs" name="workloads" value="Spark Jobs">
-                <label for="sparkJobs">Spark Jobs</label><br>
-                <input type="checkbox" id="realTimeIntelligence" name="workloads" value="Real-Time Intelligence">
-                <label for="realTimeIntelligence">Real-Time Intelligence</label><br>
-                <input type="checkbox" id="eventstream" name="workloads" value="Eventstream">
-                <label for="eventstream">Eventstream</label><br>
-                <input type="checkbox" id="fabricDatabases" name="workloads" value="Microsoft Fabric Databases">
-                <label for="fabricDatabases">Microsoft Fabric Databases</label><br>
-                <input type="checkbox" id="dataScience" name="workloads" value="Data Science">
-                <label for="dataScience">Data Science</label><br>
-                <input type="checkbox" id="sqlAnalytics" name="workloads" value="Ad-Hoc SQL Analytics">
-                <label for="sqlAnalytics">Ad-Hoc SQL Analytics</label><br>
-                <input type="checkbox" id="powerBI" name="workloads" value="Power BI">
-                <label for="powerBI">Power BI</label><br>
-                <input type="checkbox" id="powerBIEmbedded" name="workloads" value="Power BI Embedded">
-                <label for="powerBIEmbedded">Power BI Embedded</label><br>
-            </div>
+        <fieldset id="workloads">
+            <legend>Workloads:</legend>
+            <label><input type="checkbox" value="Data Factory"> Data Factory</label>
+            <label><input type="checkbox" value="Spark Jobs"> Spark Jobs</label>
+            <label><input type="checkbox" value="Data Science"> Data Science</label>
+            <label><input type="checkbox" value="Ad-Hoc SQL Analytics"> Ad-Hoc SQL Analytics</label>
+            <label><input type="checkbox" value="Power BI"> Power BI</label>
+            <label><input type="checkbox" value="Power BI Embedded"> Power BI Embedded</label>
+            <label><input type="checkbox" value="Real-Time Intelligence"> Real-Time Intelligence</label>
+            <label><input type="checkbox" value="Eventstream"> Eventstream</label>
+            <label><input type="checkbox" value="Microsoft Fabric Databases"> Microsoft Fabric Databases</label>
+        </fieldset>
 
-            <button type="button" onclick="calculateSKU()">Calculate SKU</button>
-        </form>
-        <div id="result"></div>
-    </div>
+        <button type="button" onclick="calculateSKU()">Calculate SKU</button>
+        <button type="button" onclick="clearForm()">Clear</button>
+    </form>
+
+    <div id="result"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
