@@ -16,9 +16,14 @@ Last updated: 2025-01-16
 
 ## Overview
 
-- index.html: This file contains the structure and content of the web page. It includes the form for user inputs, labels, and a section to display the results. It also links to the CSS file for styling and the JavaScript file for functionality.
-- styles.css: This file contains the styles for the web page. It defines the appearance of the elements, such as the layout, colors, fonts, and spacing. It ensures the web page looks visually appealing and is easy to use.
-- script.js:  This file contains the JavaScript code that handles the logic for calculating the Fabric SKU based on user inputs. It processes the input data, performs the calculations, and updates the web page with the results.
+- `.github/`: Contains GitHub-specific files, such as GitHub Actions workflows.
+- `src/`: Directory for source files, including HTML, CSS, and JavaScript files.
+  - `index.html`: This file contains the structure and content of the web page. It includes the form for user inputs, labels, and a section to display the results. It also links to the CSS file for styling and the JavaScript file for functionality.
+  - `styles.css`: This file contains the styles for the web page. It defines the appearance of the elements, such as the layout, colors, fonts, and spacing. It ensures the web page looks visually appealing and is easy to use.
+  - `script.js`:  This file contains the JavaScript code that handles the logic for calculating the Fabric SKU based on user inputs. It processes the input data, performs the calculations, and updates the web page with the results.
+- `.gitignore`: Specifies files and directories that should be ignored by Git.
+- `LICENSE`: Contains the license information for the project.
+- `README.md`: Provides documentation about the project, including how to set it up and use it.
 
 ## References 
 
