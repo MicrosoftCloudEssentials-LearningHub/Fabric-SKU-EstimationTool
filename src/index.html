@@ -4,106 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SKU Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input, select {
-            margin-top: 5px;
-            padding: 5px;
-            width: 100%;
-            max-width: 300px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        #result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>SKU Calculator</h1>
-    <form id="skuForm">
-        <label for="dataSize">Data Size (GB):</label>
-        <input type="number" id="dataSize" name="dataSize" step="0.01">
+    <div class="container">
+        <h1>SKU Calculator</h1>
+        <form id="skuForm">
+            <label for="dataSize">Data Size (GB):</label>
+            <input type="number" id="dataSize" name="dataSize" step="0.01" title="Enter the total size of your data in gigabytes. This helps determine the storage requirements.">
 
-        <label for="batchCycles">Batch Cycles:</label>
-        <input type="number" id="batchCycles" name="batchCycles">
+            <label for="batchCycles">Batch Cycles:</label>
+            <input type="number" id="batchCycles" name="batchCycles" title="Enter the number of batch cycles your data processing requires. This affects the compute resources needed.">
 
-        <label for="numTables">Number of Tables:</label>
-        <input type="number" id="numTables" name="numTables">
+            <label for="numTables">Number of Tables:</label>
+            <input type="number" id="numTables" name="numTables" title="Enter the number of tables in your database. Note: This parameter has a minimal impact on SKU size.">
 
-        <label for="copilotEnabled">Copilot Enabled:</label>
-        <select id="copilotEnabled" name="copilotEnabled">
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-        </select>
+            <label for="copilotEnabled">Copilot Enabled:</label>
+            <select id="copilotEnabled" name="copilotEnabled" title="Select whether Copilot is enabled for your workload. Enabling Copilot can increase the SKU size due to additional compute requirements.">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
 
-        <label for="dataRefreshFrequency">Data Refresh Frequency:</label>
-        <select id="dataRefreshFrequency" name="dataRefreshFrequency">
-            <option value="hourly">Hourly</option>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-        </select>
+            <label for="dataRefreshFrequency">Data Refresh Frequency:</label>
+            <select id="dataRefreshFrequency" name="dataRefreshFrequency" title="Select how often your data is refreshed. More frequent refreshes require more compute resources.">
+                <option value="hourly">Hourly</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+            </select>
 
-        <label for="peakUsageTimes">Peak Usage Times:</label>
-        <input type="text" id="peakUsageTimes" name="peakUsageTimes">
+            <label for="peakUsageTimes">Peak Usage Times:</label>
+            <input type="text" id="peakUsageTimes" name="peakUsageTimes" title="Enter the times when your system experiences peak usage. This helps in planning for capacity during high demand periods.">
 
-        <label for="dataRetentionPeriod">Data Retention Period:</label>
-        <select id="dataRetentionPeriod" name="dataRetentionPeriod">
-            <option value="1 year">1 Year</option>
-            <option value="5 years">5 Years</option>
-            <option value="10 years">10 Years</option>
-        </select>
+            <label for="dataRetentionPeriod">Data Retention Period:</label>
+            <select id="dataRetentionPeriod" name="dataRetentionPeriod" title="Select the period for which data is retained. Longer retention periods may require more storage.">
+                <option value="1 year">1 Year</option>
+                <option value="5 years">5 Years</option>
+                <option value="10 years">10 Years</option>
+            </select>
 
-        <label for="userCount">User Count:</label>
-        <input type="number" id="userCount" name="userCount">
+            <label for="userCount">User Count:</label>
+            <input type="number" id="userCount" name="userCount" title="Enter the number of users accessing the system. More users can increase the compute and storage requirements.">
 
-        <label for="dataComplexity">Data Complexity:</label>
-        <select id="dataComplexity" name="dataComplexity">
-            <option value="simple">Simple</option>
-            <option value="moderate">Moderate</option>
-            <option value="complex">Complex</option>
-        </select>
+            <label for="dataComplexity">Data Complexity:</label>
+            <select id="dataComplexity" name="dataComplexity" title="Select the complexity level of your data. More complex data requires more compute resources for processing.">
+                <option value="simple">Simple</option>
+                <option value="moderate">Moderate</option>
+                <option value="complex">Complex</option>
+            </select>
 
-        <fieldset id="workloads">
-            <legend>Workloads:</legend>
-            <label><input type="checkbox" value="Data Factory"> Data Factory</label>
-            <label><input type="checkbox" value="Spark Jobs"> Spark Jobs</label>
-            <label><input type="checkbox" value="Data Science"> Data Science</label>
-            <label><input type="checkbox" value="Ad-Hoc SQL Analytics"> Ad-Hoc SQL Analytics</label>
-            <label><input type="checkbox" value="Power BI"> Power BI</label>
-            <label><input type="checkbox" value="Power BI Embedded"> Power BI Embedded</label>
-            <label><input type="checkbox" value="Real-Time Intelligence"> Real-Time Intelligence</label>
-            <label><input type="checkbox" value="Eventstream"> Eventstream</label>
-            <label><input type="checkbox" value="Microsoft Fabric Databases"> Microsoft Fabric Databases</label>
-        </fieldset>
+            <fieldset id="workloads">
+                <legend>Workloads:</legend>
+                <label><input type="checkbox" value="Data Factory" title="Data extraction and ETL processes."> Data Factory</label>
+                <label><input type="checkbox" value="Spark Jobs" title="Data processing and transformation using Spark."> Spark Jobs</label>
+                <label><input type="checkbox" value="Data Science" title="Data analysis and machine learning tasks."> Data Science</label>
+                <label><input type="checkbox" value="Ad-Hoc SQL Analytics" title="SQL queries and reporting."> Ad-Hoc SQL Analytics</label>
+                <label><input type="checkbox" value="Power BI" title="Data visualization and reporting using Power BI."> Power BI</label>
+                <label><input type="checkbox" value="Power BI Embedded" title="Embedded analytics using Power BI."> Power BI Embedded</label>
+                <label><input type="checkbox" value="Real-Time Intelligence" title="Real-time data processing and analytics."> Real-Time Intelligence</label>
+                <label><input type="checkbox" value="Eventstream" title="Event-driven data processing."> Eventstream</label>
+                <label><input type="checkbox" value="Microsoft Fabric Databases" title="Database management and storage using Microsoft Fabric."> Microsoft Fabric Databases</label>
+            </fieldset>
 
-        <button type="button" onclick="calculateSKU()">Calculate SKU</button>
-        <button type="button" onclick="clearForm()">Clear</button>
-    </form>
+            <button type="button" onclick="calculateSKU()">Calculate SKU</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </form>
 
-    <div id="result"></div>
+        <div id="result"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
