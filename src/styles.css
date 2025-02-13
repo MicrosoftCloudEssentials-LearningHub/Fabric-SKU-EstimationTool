@@ -6,118 +6,69 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 50px auto;
+    width: 80%;
+    margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
 }
 
 h1 {
-    text-align: center;
-    color: #4CAF50; /* Changed to match the first CSS */
+    color: #333;
 }
 
 p {
-    text-align: center;
     color: #666;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 400px; /* Added to match the first CSS */
-    margin: auto; /* Added to match the first CSS */
-    padding: 20px; /* Added to match the first CSS */
-    border: 1px solid #ccc; /* Added to match the first CSS */
-    border-radius: 10px; /* Added to match the first CSS */
-    background-color: #f9f9f9; /* Added to match the first CSS */
+.colored-box {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.blue {
+    background-color: #e0f7fa;
+    border-left: 5px solid #00acc1;
+}
+
+.yellow {
+    background-color: #fff9c4;
+    border-left: 5px solid #ffeb3b;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #e3f2fd; /* Light blue background */
-    border: 1px solid #90caf9; /* Blue border */
+    margin-bottom: 15px;
 }
 
 label {
-    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
     color: #333;
-    margin-bottom: 5px; /* Added to match the first CSS */
 }
 
 input[type="number"],
+input[type="text"],
 select {
-    padding: 10px;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
-    width: 100%; /* Added to match the first CSS */
-    margin-bottom: 10px; /* Added to match the first CSS */
 }
 
 button {
-    padding: 10px 20px;
+    padding: 10px 15px;
     border: none;
     border-radius: 4px;
-    background-color: #4CAF50; /* Changed to match the first CSS */
+    cursor: pointer;
+}
+
+button[type="button"] {
+    background-color: #00acc1;
     color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #45a049; /* Changed to match the first CSS */
-}
-
-fieldset {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    background-color: #f9f9f9;
-}
-
-legend {
-    font-weight: bold;
-    color: #333;
-}
-
-.info-icon {
-    cursor: pointer;
-    margin-left: 5px;
-    color: #0078d4;
-}
-
-#result {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #e7f3ff;
-    border: 1px solid #b3d4fc;
-    border-radius: 4px;
-    color: #333;
-}
-
-.colored-box {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 4px;
-    color: #333;
-    text-align: center;
-    font-weight: bold;
-}
-
-.colored-box.blue {
-    background-color: #e3f2fd; /* Light blue background */
-    border: 1px solid #90caf9; /* Blue border */
-}
-
-colored-box.yellow {
-    background-color: #ffeb3b; /* Yellow background */
-    border: 1px solid #fbc02d; /* Dark yellow border */
+button[type="button"]:last-child {
+    background-color: #f44336;
+    color: #fff;
 }
