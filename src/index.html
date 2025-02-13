@@ -3,110 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microsoft Fabric SKU Helper</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Badge Generator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Microsoft Fabric SKU Helper - Illustrative Tool</h1>
-        <p>This tool is for estimation purposes only. Please contact Microsoft sales for assistance with real case data and accurate recommendations.</p>
+        <h1>Badge Generator</h1>
+        <p>This tool allows you to generate custom badges with various parameters.</p>
         
         <div class="colored-box blue">
-            <form id="skuForm">
+            <form id="badgeForm">
                 <div class="form-group">
-                    <label for="copilotEnabled">Is Copilot Enabled? <span class="info-icon" title="Select whether Copilot is enabled for your workload. Enabling Copilot can increase the SKU size due to additional compute requirements.">ℹ️</span></label>
-                    <select id="copilotEnabled" name="copilotEnabled">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
+                    <label for="badgeWidth">Width:</label>
+                    <input type="number" id="badgeWidth" name="badgeWidth" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="badgeHeight">Height:</label>
+                    <input type="number" id="badgeHeight" name="badgeHeight" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="backgroundColor">Background Color:</label>
+                    <select id="backgroundColor" name="backgroundColor" required>
+                        <option value="#FFFFFF">White</option>
+                        <option value="#000000">Black</option>
+                        <option value="#FF5733">Red</option>
+                        <option value="#33FF57">Green</option>
+                        <option value="#3357FF">Blue</option>
+                        <option value="#FF33A1">Pink</option>
+                        <option value="#A133FF">Purple</option>
                     </select>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="batchCycles">Number of Daily Batch Cycles: <span class="info-icon" title="Enter the number of batch cycles your data processing requires. This affects the compute resources needed.">ℹ️</span></label>
-                    <select id="batchCycles" name="batchCycles">
-                        <option value="1">1</option>
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                        <option value="7">7</option>
-                        <option value="14">14</option>
+                    <label for="borderColor">Border Color:</label>
+                    <select id="borderColor" name="borderColor" required>
+                        <option value="#FFFFFF">White</option>
+                        <option value="#000000">Black</option>
+                        <option value="#FF5733">Red</option>
+                        <option value="#33FF57">Green</option>
+                        <option value="#3357FF">Blue</option>
+                        <option value="#FF33A1">Pink</option>
+                        <option value="#A133FF">Purple</option>
                     </select>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="dataSize">Total Size of Data When Compressed (GB): <span class="info-icon" title="Enter the total size of your data in gigabytes. This helps determine the storage requirements.">ℹ️</span></label>
-                    <select id="dataSize" name="dataSize">
-                        <option value="100">0 - 100 GB</option>
-                        <option value="300">101 - 300 GB</option>
-                        <option value="900">301 - 900 GB</option>
-                        <option value="2000">901 GB - 2 TB</option>
-                        <option value="5000">2 TB - 5 TB</option>
-                        <option value="10000">5 TB - 10 TB</option>
-                        <option value="50000">10 TB - 50 TB</option>
-                        <option value="100000">50 TB - 100 TB</option>
-                        <option value="1000000">100 TB and more</option>
+                    <label for="textColor">Text Color:</label>
+                    <select id="textColor" name="textColor" required>
+                        <option value="#FFFFFF">White</option>
+                        <option value="#000000">Black</option>
+                        <option value="#FF5733">Red</option>
+                        <option value="#33FF57">Green</option>
+                        <option value="#3357FF">Blue</option>
+                        <option value="#FF33A1">Pink</option>
+                        <option value="#A133FF">Purple</option>
                     </select>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="numTables">Number of Tables Across All Data Sources: <span class="info-icon" title="Enter the number of tables in your database.">ℹ️</span></label>
-                    <select id="numTables" name="numTables">
-                        <option value="100">0 - 100</option>
-                        <option value="500">101 - 500</option>
-                        <option value="1000">501 - 1000</option>
-                        <option value="5000">1001 - 5000</option>
-                        <option value="10000">5001 - 10000</option>
-                        <option value="20000">10001 - 20000</option>
-                        <option value="50000">20001 - 50000</option>
-                        <option value="100000">50001 - 100000</option>
-                        <option value="1000000">100000 and more</option>
+                    <label for="shape">Shape:</label>
+                    <select id="shape" name="shape" required>
+                        <option value="circle">Circle</option>
+                        <option value="square">Square</option>
                     </select>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="dataRefreshFrequency">Data Refresh Frequency: <span class="info-icon" title="Select how often your data is refreshed. More frequent refreshes require more compute resources.">ℹ️</span></label>
-                    <select id="dataRefreshFrequency" name="dataRefreshFrequency">
-                        <option value="hourly">Hourly</option>
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                    </select>
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" required>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="dataComplexity">Data Complexity: <span class="info-icon" title="Select the complexity level of your data. More complex data requires more compute resources for processing.">ℹ️</span></label>
-                    <select id="dataComplexity" name="dataComplexity">
-                        <option value="simple">Simple</option>
-                        <option value="moderate">Moderate</option>
-                        <option value="complex">Complex</option>
-                    </select>
+                    <label for="additionalText">Additional Text:</label>
+                    <input type="text" id="additionalText" name="additionalText" required>
                 </div>
-
-                <fieldset id="workloads">
-                    <legend>Workloads:</legend>
-                    <label><input type="checkbox" value="Data Factory" title="Data extraction and ETL processes."> Data Factory</label>
-                    <label><input type="checkbox" value="Spark Jobs" title="Data processing and transformation using Spark."> Spark Jobs</label>
-                    <label><input type="checkbox" value="Data Science" title="Data analysis and machine learning tasks."> Data Science</label>
-                    <label><input type="checkbox" value="Ad-Hoc SQL Analytics" title="SQL queries and reporting."> Ad-Hoc SQL Analytics</label>
-                    <label><input type="checkbox" value="Power BI" title="Data visualization and reporting using Power BI."> Power BI</label>
-                    <label><input type="checkbox" value="Power BI Embedded" title="Embedded analytics using Power BI."> Power BI Embedded</label>
-                    <label><input type="checkbox" value="Real-Time Intelligence" title="Real-time data processing and analytics."> Real-Time Intelligence</label>
-                    <label><input type="checkbox" value="Eventstream" title="Event-driven data processing."> Eventstream</label>
-                    <label><input type="checkbox" value="Microsoft Fabric Databases" title="Database management and storage using Microsoft Fabric."> Microsoft Fabric Databases</label>
-                </fieldset>
-
+                
                 <div class="form-group">
-                    <button type="button" onclick="calculateSKU()">Calculate SKU</button>
-                    <button type="button" onclick="clearForm()">Clear</button>
+                    <button type="submit">Generate Badge</button>
+                    <button type="button" id="clearButton">Clear</button>
                 </div>
+                
+                <p id="regenerateMessage">Please regenerate the badge since parameters have changed.</p>
             </form>
         </div>
-
-        <div id="result"></div>
-
-        <div class="colored-box yellow">
-            <p>Important: This is an illustrative tool. For accurate recommendations, please contact Microsoft sales.</p>
+        
+        <div id="badgePreview"></div>
+        
+        <div class="form-group">
+            <button id="downloadSVGButton" style="display:none;">Download SVG</button>
+            <button id="downloadPNGButton" style="display:none;">Download PNG</button>
         </div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
