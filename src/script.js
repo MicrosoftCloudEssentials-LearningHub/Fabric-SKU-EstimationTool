@@ -98,18 +98,19 @@ function adjustForWorkloads(sku, workloads) {
 }
 
 function adjustForCopilot(sku, copilotEnabled) {
-    // Adjust SKU if Copilot is enabled
+    // Check if Copilot is enabled
     if (copilotEnabled) {
-        if (sku < 64) { // least 64 if Copilot is enabled
+        // Ensure the SKU is at least 64 if Copilot is enabled
+        if (sku < 64) {
             sku = 64;
-        } else if (sku < 128) {
-            const increment = Math.ceil(sku * 0.05);  // Add 5% of the current SKU
+        } else {
+            // Calculate a dynamic increment based on 2% of the current SKU
+            const increment = Math.ceil(sku * 0.02);
+            // Add the increment to the current SKU
             sku += increment;
-            if (sku > 128) {
-                sku = 128;  // Ensure it doesn't exceed 128
-            }
         }
     }
+    // Return the adjusted SKU value
     return sku;
 }
 
