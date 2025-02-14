@@ -103,11 +103,6 @@ function adjustForCopilot(sku, copilotEnabled) {
         // Ensure the SKU is at least 64 if Copilot is enabled
         if (sku < 64) {
             sku = 64;
-        } else {
-            // Calculate a dynamic increment based on 2% of the current SKU
-            const increment = Math.ceil(sku * 0.02);
-            // Add the increment to the current SKU
-            sku += increment;
         }
     }
     // Return the adjusted SKU value
