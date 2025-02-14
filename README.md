@@ -14,6 +14,8 @@ Last updated: 2025-01-21
 > [!IMPORTANT]
 > Please note that `these demos are intended as a guide and are based on my personal experiences. For official guidance, support, or more detailed information, please refer to Microsoft's official documentation or contact Microsoft directly`: [Microsoft Sales and Support](https://support.microsoft.com/contactus?ContactUsExperienceEntryPointAssetId=S.HP.SMC-HOME)
 
+https://github.com/user-attachments/assets/36733493-2717-46a2-a8e6-49d8298613f7
+
 ## Overview
 
 - `.github/`: Contains GitHub-specific files, such as GitHub Actions workflows.
