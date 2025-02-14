@@ -55,10 +55,12 @@ async function calculateSKU() {
     // Calculate SKU based on various factors
     let sku = calculateBaseSKU(dataSize, batchCycles, numTables, externalData);
     sku = adjustForWorkloads(sku, workloads);
-    sku = adjustForCopilot(sku, copilotEnabled);
     sku = adjustForAdditionalFactors(sku, dataRefreshFrequency, dataComplexity);
     sku = adjustForStorage(sku, dataSize);
     sku = adjustForDemandForecasting(sku);
+
+    // Validate SKU for Copilot
+    sku = validateCopilotSKU(sku, copilotEnabled);
 
     // Determine the recommended SKU and capacity units
     const { recommendedSku, capacityUnits, cuUse30Sec } = determineSKU(sku);
@@ -97,15 +99,15 @@ function adjustForWorkloads(sku, workloads) {
     return sku;
 }
 
-function adjustForCopilot(sku, copilotEnabled) {
-    // Check if Copilot is enabled
+function validateCopilotSKU(sku, copilotEnabled) {
+    // Validate SKU if Copilot is enabled
     if (copilotEnabled) {
         // Ensure the SKU is at least 64 if Copilot is enabled
         if (sku < 64) {
             sku = 64;
         }
     }
-    // Return the adjusted SKU value
+    // Return the validated SKU value
     return sku;
 }
 
