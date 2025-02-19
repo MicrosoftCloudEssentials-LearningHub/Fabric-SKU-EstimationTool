@@ -9,7 +9,7 @@ Last updated: 2025-02-19
 
 ----------
 
-> This tool is for helping with Fabric SKU estimations and that it is an illustrative, [non-official tool](https://microsoftcloudessentials-learninghub.github.io/Fabric-SKU-helper/).
+> This tool is for helping with Fabric SKU estimations and that it is an illustrative, [non-official tool](https://microsoftcloudessentials-learninghub.github.io/Fabric-SKU-EstimationTool/).
 
 > [!IMPORTANT]
 > Please note that `these demos are intended as a guide and are based on my personal experiences. For official guidance, support, or more detailed information, please refer to Microsoft's official documentation or contact Microsoft directly`: [Microsoft Sales and Support](https://support.microsoft.com/contactus?ContactUsExperienceEntryPointAssetId=S.HP.SMC-HOME)
