@@ -1,4 +1,4 @@
-# Microsoft Fabric SKU Calculator - Ilustrative tool 
+# Microsoft Fabric SKU Estimation Tool (Helper) - Ilustrative tool 
 
 Costa Rica
 
