@@ -5,11 +5,20 @@ Costa Rica
 [![GitHub](https://img.shields.io/badge/--181717?logo=github&logoColor=ffffff)](https://github.com/)
 [brown9804](https://github.com/brown9804)
 
-Last updated: 2025-02-19
+Last updated: 2025-04-15
 
 ----------
 
-> This tool is for helping with Fabric SKU estimations and that it is an illustrative, [non-official tool](https://microsoftcloudessentials-learninghub.github.io/Fabric-SKU-EstimationTool/).
+> This tool is for helping with Fabric SKU estimations and that it is an illustrative, [non-official tool](https://microsoftcloudessentials-learninghub.github.io/Fabric-SKU-EstimationTool/), is intended for estimation purposes only. A more comprehensive [Microsoft Capacity Estimator tool](https://www.microsoft.com/en-us/microsoft-fabric/capacity-estimator) `is now in public preview General Availability (GA)`. Please stay tuned for updates. 
+
+<details>
+<summary><b>List of References</b> (Click to expand)</summary>
+  
+- [Empowering businesses with smart capacity planning: Introducing the Microsoft Fabric SKU estimator (Preview)](https://blog.fabric.microsoft.com/en-US/blog/empowering-businesses-with-smart-capacity-planning-introducing-the-microsoft-fabric-sku-estimator/)
+- [Announcing New Recruitment for the Private Preview of Microsoft Fabric SKU Estimator](https://blog.fabric.microsoft.com/en-us/blog/announcing-new-recruitment-for-the-private-preview-of-microsoft-fabric-sku-estimator?ft=All)
+- [Announcing the Fabric Roadmap](https://blog.fabric.microsoft.com/en-us/blog/announcing-the-fabric-roadmap?ft=All)
+
+</details>
 
 > [!IMPORTANT]
 > Please note that `these demos are intended as a guide and are based on my personal experiences. For official guidance, support, or more detailed information, please refer to Microsoft's official documentation or contact Microsoft directly`: [Microsoft Sales and Support](https://support.microsoft.com/contactus?ContactUsExperienceEntryPointAssetId=S.HP.SMC-HOME)
@@ -27,10 +36,6 @@ https://github.com/user-attachments/assets/36733493-2717-46a2-a8e6-49d8298613f7
 - `LICENSE`: Contains the license information for the project.
 - `README.md`: Provides documentation about the project, including how to set it up and use it.
 
-## References 
-
-- [Announcing New Recruitment for the Private Preview of Microsoft Fabric SKU Estimator](https://blog.fabric.microsoft.com/en-us/blog/announcing-new-recruitment-for-the-private-preview-of-microsoft-fabric-sku-estimator?ft=All)
-- [Announcing the Fabric Roadmap](https://blog.fabric.microsoft.com/en-us/blog/announcing-the-fabric-roadmap?ft=All)
 
 <div align="center">
   <h3 style="color: #4CAF50;">Total Visitors</h3>
