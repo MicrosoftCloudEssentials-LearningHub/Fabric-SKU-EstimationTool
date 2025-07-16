@@ -37,9 +37,11 @@ https://github.com/user-attachments/assets/36733493-2717-46a2-a8e6-49d8298613f7
 - `README.md`: Provides documentation about the project, including how to set it up and use it.
 
 
+<!-- START BADGE -->
 <div align="center">
-  <h3 style="color: #4CAF50;">Total Visitors</h3>
-  <img src="https://profile-counter.glitch.me/brown9804/count.svg" alt="Visitor Count" style="border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+  <img src="https://img.shields.io/badge/Total%20views-77-limegreen" alt="Total views">
+  <p>Refresh Date: 2025-07-16</p>
 </div>
+<!-- END BADGE -->
 
 
