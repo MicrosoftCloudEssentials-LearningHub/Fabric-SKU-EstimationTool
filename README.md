@@ -5,7 +5,7 @@ Costa Rica
 [![GitHub](https://img.shields.io/badge/--181717?logo=github&logoColor=ffffff)](https://github.com/)
 [brown9804](https://github.com/brown9804)
 
-Last updated: 2025-07-16
+Last updated: 2025-10-15
 
 ----------
 
@@ -17,6 +17,40 @@ Last updated: 2025-07-16
 - [Empowering businesses with smart capacity planning: Introducing the Microsoft Fabric SKU estimator (Preview)](https://blog.fabric.microsoft.com/en-US/blog/empowering-businesses-with-smart-capacity-planning-introducing-the-microsoft-fabric-sku-estimator/)
 - [Announcing New Recruitment for the Private Preview of Microsoft Fabric SKU Estimator](https://blog.fabric.microsoft.com/en-us/blog/announcing-new-recruitment-for-the-private-preview-of-microsoft-fabric-sku-estimator?ft=All)
 - [Announcing the Fabric Roadmap](https://blog.fabric.microsoft.com/en-us/blog/announcing-the-fabric-roadmap?ft=All)
+
+</details>
+
+<details> 
+<summary><b> Before Fabric</b> (Click to expand)</summary>
+
+<p float="left">
+  <img src="https://github.com/brown9804/MSCloudEssentials_LPath/assets/24630902/c47ad7c0-375e-4257-b56e-7b3b89619e2f" width="450" height="200" />
+  <img src="https://github.com/user-attachments/assets/1cbb0198-774c-498d-ab60-2f4c8e2a4218" width="350" height="190" />
+</p>
+
+> E.g of a solution prior Microsoft Fabric:
+
+<div align="left">
+  <img src="https://github.com/user-attachments/assets/af2aa6cb-0349-481b-abe4-d8c470551899" 
+       alt="Centered Image" 
+       style="width: 70%; border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
+
+> Now from one place:
+
+<div align="left">
+  <img src="https://github.com/user-attachments/assets/aaf00cd7-531a-4dc8-bf2f-c7606c607b87" 
+       alt="Centered Image" 
+       style="width: 70%; border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
+
+<div align="left">
+  <img src="https://github.com/user-attachments/assets/8fdb3198-8fda-4dd0-869e-b0dccb268a30" 
+       alt="Centered Image" 
+       style="width: 70%; border: 2px solid #4CAF50; border-radius: 5px; padding: 5px;"/>
+</div>
+
+From [Microsoft Documentation](https://learn.microsoft.com/pt-br/fabric/fundamentals/microsoft-fabric-overview)
 
 </details>
 
